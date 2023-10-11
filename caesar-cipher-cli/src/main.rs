@@ -22,11 +22,15 @@ struct Args {
     #[arg(short, long)]
     encrypt: bool,
 
-    /// decrypt the message
+    /// Decrypt the message
     #[arg(short, long)]
     decrypt: bool,
 
-    /// The message to encrypt or decrypt
+    /// Reverse the message (new argument)
+    #[arg(short, long)]
+    reverse: bool,
+
+    /// The message to encrypt, decrypt, or reverse
     #[arg(short, long)]
     message: String,
 
@@ -36,6 +40,7 @@ struct Args {
     shift: u8,
 }
 
+
 // run it
 fn main() {
     let args = Args::parse();
@@ -43,7 +48,12 @@ fn main() {
         println!("{}", encrypt(&args.message, args.shift));
     } else if args.decrypt {
         println!("{}", decrypt(&args.message, args.shift));
+    } else if args.reverse {
+        // Reverse the message (for example, reverse a string "hello" to "olleh")
+        let reversed_message: String = args.message.chars().rev().collect();
+        println!("{}", reversed_message);
     } else {
-        println!("Please specify either --encrypt or --decrypt");
+        println!("Please specify either --encrypt, --decrypt, or --reverse");
     }
 }
+
