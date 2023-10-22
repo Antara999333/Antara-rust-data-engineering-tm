@@ -19,19 +19,19 @@ use clap::Parser;
 #[command(author, version, about, long_about = None)]
 struct Args {
     /// Encrypt the message
-    #[arg(short, long)]
-    encrypt: bool,
+    #[arg(long)]
+    superencrypt: bool,
 
     /// Decrypt the message
     #[arg(short, long)]
     decrypt: bool,
 
     /// Reverse the message (new argument)
-    #[arg(short, long)]
+    #[arg(long)]
     reverse: bool,
 
     /// The message to encrypt, decrypt, or reverse
-    #[arg(short, long)]
+    #[arg(long)]
     message: String,
 
     /// The shift to use for the cipher
@@ -45,7 +45,7 @@ struct Args {
 fn main() {
     let args = Args::parse();
     if args.encrypt {
-        println!("{}", encrypt(&args.message, args.shift));
+        println!("{}", superencrypt(&args.message, args.shift));
     } else if args.decrypt {
         println!("{}", decrypt(&args.message, args.shift));
     } else if args.reverse {
@@ -53,7 +53,7 @@ fn main() {
         let reversed_message: String = args.message.chars().rev().collect();
         println!("{}", reversed_message);
     } else {
-        println!("Please specify either --encrypt, --decrypt, or --reverse");
+        println!("Please specify either --superencrypt, --decrypt, or --reverse");
     }
 }
 
