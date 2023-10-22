@@ -7,6 +7,6 @@
 # Main.rs 
 I altered the code in main.rs so that 'encrypt' was changed to 'superencrypt'. I also removed the 'short' option because it created a conflict between 'shift' and 'superencrypt'.
 
-![My Image](C:\Users\admin\Desktop\Data Engg\secondrustpic.png)
+![My Image](C://Users//admin//Desktop//Data Engg//secondrustpic.png)
 
 
